@@ -27,8 +27,8 @@ className='cursor-pointer'/>
 
 
 <div className=' md:px-[160px]'>
-<ul className='flex   justify-center'>
-{slice.primary.card.map((card, index) => (<li className='px-2 pb-2'>
+<ul className='flex flex-wrap  justify-center'>
+{slice.primary.card.map((card, index) => (<li className='px-2 pb-2'    key={index}>
   <PrismicNextImage field={card.image} className='cursor-pointer w-[400px] h-[300px]'/>
   
   <div className='flex items-center justify-between px-2 -mt-8 cursor-pointer'>

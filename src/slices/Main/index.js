@@ -13,7 +13,7 @@ const Main = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-    <header className='border-b flex md:justify-center px-4 py-8 '>
+    <header className=' flex md:justify-center px-4 py-8 '>
      { console.log(slice)}
       
     <Image
@@ -27,8 +27,8 @@ className='cursor-pointer'/>
 
 
 <div className=' md:px-[160px]'>
-<ul className='flex flex-wrap  justify-center'>
-{slice.primary.card.map((card, index) => (<li className='px-2 pb-2'    key={index}>
+<ul className='flex flex-wrap  justify-center '>
+{slice.primary.card.map((card, index) => (<li className='px-2 py-2'    key={index}>
   <PrismicNextImage field={card.image} className='cursor-pointer w-[400px] h-[300px]'/>
   
   <div className='flex items-center justify-between px-2 -mt-8 cursor-pointer'>

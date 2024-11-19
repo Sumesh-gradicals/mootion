@@ -65,7 +65,7 @@ const Main = ({ slice }) => {
 
 <PrismicLink field={selectedCard.view_live} className='text-xs font-semibold'>View Live</PrismicLink>
 </div>
-<p className='py-4 text-xs font-thin text-slate-500'>Romal's Submission</p>
+<p className='py-4 text-xs font-thin text-slate-500'>{selectedCard.submitted_by}&apos;s Submission</p>
 
 <PrismicNextImage field={selectedCard.image}  className=' w-[645px] h-[370px] rounded-md'/>
 <p  className='py-6 text-sm font-thin '>Tutorials are available for After Effects, GSAP & Framer Motion</p>

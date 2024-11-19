@@ -12,7 +12,7 @@ const Main = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-    className='bg-white'>
+    className='bg-white h-screen'>
     <header className=' flex md:justify-center px-4 py-8 '>
      { console.log(slice)}
       

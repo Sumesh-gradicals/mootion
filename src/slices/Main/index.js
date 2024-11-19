@@ -12,13 +12,13 @@ const Main = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-    >
+   >
 
 
    
 
 
-<div className=' md:px-[160px]'>
+<div className=' md:px-[100px]'>
 <ul className='flex flex-wrap  justify-center '>
 {slice.primary.card.map((card, index) => (<li className='  px-2 py-2 cursor-pointer '    key={index}>
   <PrismicNextImage field={card.image} className=' w-[400px] h-[300px] rounded-md'/>

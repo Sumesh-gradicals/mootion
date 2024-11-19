@@ -16,7 +16,8 @@ const Main = ({ slice }) => {
   const [selectedCard, setSelectedCard] = useState(null);
 
  
-  const openModal = (card) => {
+  const openModal = (card,event) => {
+    event.stopPropagation();
     setSelectedCard(card);
     setIsModalOpen(true);
   };
@@ -31,15 +32,13 @@ const Main = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
    >
-{console.log(slice)
-}
 
    
 
 
 <div className=' md:px-[100px]'>
 <ul className='flex flex-wrap  justify-center '>
-{slice.primary.card.map((card, index) => (<li className='  px-2 py-3 cursor-pointer '    key={index} onClick={() => openModal(card)}>
+{slice.primary.card.map((card, index) => (<li className='  px-2 py-3 cursor-pointer '    key={index} onClick={(e) => openModal(card,e)}>
   <PrismicNextImage field={card.image} className=' w-[400px] h-[300px] rounded-md'/>
   
   <div className='flex items-center justify-between px-3 -mt-9 cursor-pointer'>

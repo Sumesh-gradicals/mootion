@@ -14,8 +14,16 @@ const Main = ({ slice }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
- 
+  const categories = [...new Set(slice.primary.card.map((card) => card.category.toUpperCase()))];
+
+
+  const filteredCards = selectedCategory
+    ? slice.primary.card.filter(( (card) => card.category.toUpperCase() === selectedCategory.toUpperCase()))
+    : slice.primary.card;
+
+
   const openModal = (card,event) => {
     event.stopPropagation();
     setSelectedCard(card);
@@ -27,6 +35,8 @@ const Main = ({ slice }) => {
     setIsModalOpen(false);
     setSelectedCard(null);
   };
+
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -38,7 +48,7 @@ const Main = ({ slice }) => {
 
 <div className=' md:px-[100px]'>
 <ul className='flex flex-wrap  justify-center '>
-{slice.primary.card.map((card, index) => (<li className='  px-2 py-3 cursor-pointer '    key={index} onClick={(e) => openModal(card,e)}>
+{filteredCards.map((card, index) => (<li className='  px-2 py-3 cursor-pointer '    key={index} onClick={(e) => openModal(card,e)}>
   <PrismicNextImage field={card.image} className=' w-[400px] h-[300px] rounded-md'/>
   
   <div className='flex items-center justify-between px-3 -mt-9 cursor-pointer'>
@@ -51,7 +61,24 @@ const Main = ({ slice }) => {
 
 </div>
 
+<div className="fixed bottom-24 left-1/2 transform -translate-x-1/2 " >
+<div className='px-6 py-2 rounded-2xl text-white bg-[#383338] shadow-xl'>
 
+<div className=" flex space-x-6 h-[60px] w-[450px] items-center justify-around ">
+  
+{categories.map((category, index) => (
+
+            <p
+              key={index}
+              className={` cursor-pointer   transition-transform transform duration-300   ${selectedCategory===category?'text-white text-2xl font-bold  italic': 'text-xs font-thin text-slate-200' } `}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </p>))}
+</div>
+</div>
+
+</div>
 {/* Modal */}
 
 {isModalOpen && (<div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50" onClick={closeModal}>

@@ -70,7 +70,7 @@ const Main = ({ slice }) => {
 
             <p
               key={index}
-              className={` cursor-pointer   transition-transform transform   ${selectedCategory===category?'text-white text-2xl font-bold  italic': 'text-xs font-thin text-slate-200' } `}
+              className={` cursor-pointer   ${selectedCategory===category?'text-white text-2xl font-bold  italic': 'text-xs font-thin text-slate-200' } `}
               onClick={() => setSelectedCategory(category)}
             >
               {category}

@@ -1,5 +1,7 @@
 'use client'
 
+
+
 /**
  * @typedef {import("@prismicio/client").Content.MainSlice} MainSlice
  * @typedef {import("@prismicio/react").SliceComponentProps<MainSlice>} MainProps
@@ -15,6 +17,27 @@ const Main = ({ slice }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [isExpanded, setIsExpanded] = useState(false)
+
+
+  function split(card) {
+    console.log(card);
+    
+    const tutorials = [];
+    if (card.aftereffects_llink.url) tutorials.push("After Effects");
+    if (card.gsap_link.url) tutorials.push("GSAP");
+    if (card.framermotoin_link.url) tutorials.push("Framer Motion");
+  
+    const message =
+      tutorials.length > 0
+        ? `Tutorials are available for ${tutorials.join(", ").replace(/, ([^,]*)$/, " & $1")}`
+        : "No tutorials available";
+  
+    return message;
+  }
+  
+ 
+
 
   const categories = [...new Set(slice.primary.card.map((card) => card.category.toUpperCase()))];
 
@@ -35,7 +58,9 @@ const Main = ({ slice }) => {
     setIsModalOpen(false);
     setSelectedCard(null);
   };
-
+  const toggleExpand = () => {
+    setIsExpanded((prev) => !prev);
+  };
 
   return (
     <section
@@ -62,9 +87,26 @@ const Main = ({ slice }) => {
 </div>
 
 <div className="fixed bottom-24 left-1/2 transform -translate-x-1/2 " >
-<div className='px-6 py-2 rounded-2xl text-white bg-[#383338] shadow-xl'>
+{isExpanded && (
+        <div className="bg-[#262526] text-white p-4 rounded-xl shadow-lg -mb-8 mx-auto w-[425px] h-[380px]">
+          <div className='py-6 px-4 '>
+          <h2 className="text-7xl font-bold mb-2 uppercase text-center italic">Mootion</h2>
+         <div className='text-xs text-stone-400 font-thin'>
+          <p >
+          is a WIP internal tool developed by GRADICAL to bridge the gap between good and great design.</p>
 
-<div className=" flex space-x-6 h-[60px] w-[450px] items-center justify-around ">
+<p className='mt-4'>This is a inspiration repository of cool digital animations that will help designers and developers produce high quality work.</p>
+
+<p className='mt-4'>If you&apos;re part of the team, welcome take a look around and knock it out of the park, if you’re a lost traveler take what you need, check us out and put in a good word.</p>
+<p className='mt-4'>Romal.
+          </p>
+          </div>
+          </div>
+        </div>
+      )}
+<div className='px-2 py-2 rounded-2xl text-white bg-[#383338] shadow-xl'>
+
+<div className=" flex  h-[60px] w-[410px] items-center justify-around ">
   
 {categories.map((category, index) => (
 
@@ -75,10 +117,27 @@ const Main = ({ slice }) => {
             >
               {category}
             </p>))}
+            <div className="px-[0.5px] py-4 border-white bg-white"></div>
+{/* head */}
+<div className='head cursor-pointer' onClick={toggleExpand}>
+  <div>
+    <div className='eye'>
+      
+    </div>
+    <div className='eye'>
+      
+      </div>
+  </div>
+</div>
+
+
+
 </div>
 </div>
 
 </div>
+
+    
 {/* Modal */}
 
 {isModalOpen && (<div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50" onClick={closeModal}>
@@ -87,14 +146,16 @@ const Main = ({ slice }) => {
   <div className="bg-white rounded-lg p-4 w-[700px] h-[575px] "  onClick={(e) => e.stopPropagation()}  >
 <div className='px-3 py-4'>
 <div className='flex items-center justify-between ' >
-<h2 className='text-3xl font-semibold'>{selectedCard.name}</h2>
+<h2 className='text-3xl font-semibold text-stone-800'>{selectedCard.name}</h2>
 
 <PrismicLink field={selectedCard.view_live} className='text-xs font-semibold'>View Live</PrismicLink>
 </div>
 <p className='py-4 text-xs font-thin text-slate-500'>{selectedCard.submitted_by}&apos;s Submission</p>
 
 <PrismicNextImage field={selectedCard.image}  className=' w-[645px] h-[370px] rounded-md'/>
-<p  className='py-6 text-sm font-thin '>Tutorials are available for After Effects, GSAP & Framer Motion</p>
+<p  className='py-6 text-sm font-thin text-stone-800 '>{split(selectedCard)}{
+  
+  }</p>
 </div>
 
   </div>

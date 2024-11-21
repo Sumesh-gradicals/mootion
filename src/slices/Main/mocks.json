@@ -63,19 +63,44 @@
 								}
 							],
 							[
-								"tutorials_are_available_for",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "wrapped",
-									"type": "Text"
-								}
-							],
-							[
 								"submitted_by",
 								{
 									"__TYPE__": "FieldContent",
 									"value": "seed",
 									"type": "Text"
+								}
+							],
+							[
+								"aftereffects_llink",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "say"
+									}
+								}
+							],
+							[
+								"gsap_link",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "labor"
+									}
+								}
+							],
+							[
+								"framermotoin_link",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://google.com",
+										"text": "twelve"
+									}
 								}
 							]
 						]

@@ -18,4 +18,39 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+
+
+
 }
+.head {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+ 
+  border-radius: 50%;
+ 
+}
+
+
+.eye{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:absolute;
+  top:8px;
+  width:11.5px;
+  height:12px;
+ 
+  border-radius:50%;
+  background-color:white;
+  
+}
+.eye:first-child{
+  left: 8px;
+  
+}
+.eye:nth-child(2){
+  right:8px;
+}
+

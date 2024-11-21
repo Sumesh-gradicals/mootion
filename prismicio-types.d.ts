@@ -122,14 +122,34 @@ export interface MainSliceDefaultPrimaryCardItem {
   view_live: prismic.LinkField;
 
   /**
-   * Tutorials are available for field in *Main → Default → Primary → card*
+   * Aftereffects llink field in *Main → Default → Primary → card*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: main.default.primary.card[].tutorials_are_available_for
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **API ID Path**: main.default.primary.card[].aftereffects_llink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  tutorials_are_available_for: prismic.KeyTextField;
+  aftereffects_llink: prismic.LinkField;
+
+  /**
+   * GSAP link field in *Main → Default → Primary → card*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: main.default.primary.card[].gsap_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  gsap_link: prismic.LinkField;
+
+  /**
+   * framermotoin link field in *Main → Default → Primary → card*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: main.default.primary.card[].framermotoin_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  framermotoin_link: prismic.LinkField;
 }
 
 /**

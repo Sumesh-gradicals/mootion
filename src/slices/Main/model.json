@@ -57,11 +57,34 @@
                   "allowText": true
                 }
               },
-              "tutorials_are_available_for": {
-                "type": "Text",
+              "aftereffects_llink": {
+                "type": "Link",
                 "config": {
-                  "label": "Tutorials are available for",
-                  "placeholder": ""
+                  "label": "Aftereffects llink",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "select": null,
+                  "allowText": true
+                }
+              },
+              "gsap_link": {
+                "type": "Link",
+                "config": {
+                  "label": "GSAP link",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "select": null,
+                  "allowText": true
+                }
+              },
+              "framermotoin_link": {
+                "type": "Link",
+                "config": {
+                  "label": "framermotoin link",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "select": null,
+                  "allowText": true
                 }
               }
             }

@@ -17,25 +17,21 @@ const Main = ({ slice }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [isExpanded, setIsExpanded] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isTutorial, setIsTutorial] = useState([]);
 
 
   function split(card) {
-    console.log(card);
-    
-    const tutorials = [];
-    if (card.aftereffects_llink.url) tutorials.push("After Effects");
-    if (card.gsap_link.url) tutorials.push("GSAP");
-    if (card.framermotoin_link.url) tutorials.push("Framer Motion");
-  
-    const message =
-      tutorials.length > 0
-        ? `Tutorials are available for ${tutorials.join(", ").replace(/, ([^,]*)$/, " & $1")}`
-        : "No tutorials available";
-  
-    return message;
-  }
-  
+    if (!card) return []
+  const tutorials = [];
+  if (card.aftereffects_llink.url) tutorials.push({ name: "After Effects", link: card.aftereffects_llink });
+  if (card.gsap_link.url) tutorials.push({ name: "GSAP", link: card.gsap_link });
+  if (card.framermotoin_link.url) tutorials.push({ name: "Framer Motion", link: card.framermotoin_link});
+
+  return tutorials
+
+ 
+}
  
 
 
@@ -51,12 +47,14 @@ const Main = ({ slice }) => {
     event.stopPropagation();
     setSelectedCard(card);
     setIsModalOpen(true);
+    setIsTutorial(split(card));
   };
 
 
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedCard(null);
+    setIsTutorial([]);
   };
   const toggleExpand = () => {
     setIsExpanded((prev) => !prev);
@@ -153,9 +151,24 @@ const Main = ({ slice }) => {
 <p className='py-4 text-xs font-thin text-slate-500'>{selectedCard.submitted_by}&apos;s Submission</p>
 
 <PrismicNextImage field={selectedCard.image}  className=' w-[645px] h-[370px] rounded-md'/>
-<p  className='py-6 text-sm font-thin text-stone-800 '>{split(selectedCard)}{
-  
-  }</p>
+<div className="py-6 text-sm font-thin text-stone-800">
+          {isTutorial?.length > 0 ? (
+            <p>
+              Tutorials are available for{" "}
+              {isTutorial.map((tutorial, index) => {
+                return (
+                  <span key={index}>
+                    <PrismicLink field={tutorial.link} className="text-blue-600 hover:underline"> {tutorial.name}</PrismicLink>
+                   
+                  </span>
+                )
+              })}
+              
+            </p>
+          ) : (
+            <p>No tutorials available.</p>
+          )}
+        </div>
 </div>
 
   </div>

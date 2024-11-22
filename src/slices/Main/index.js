@@ -156,24 +156,27 @@ const Main = ({ slice }) => {
                 field={state.selectedCard.image}
                 className="w-[645px] h-[370px] rounded-md"
               />
-              <div className="py-6 text-sm font-thin text-stone-800">
-                {split(state.selectedCard)?.length > 0 ? (
-                  <p>
-                    Tutorials are available for{' '}
-                    {split(state.selectedCard).map((tutorial, index) => (
-                      <span key={index}>
-                        <PrismicLink
-                          field={tutorial.link}
-                          className="text-blue-600 hover:underline"
-                        >
-                           {tutorial.name} </PrismicLink>
-                      </span>
-                    ))}
-                  </p>
-                ) : (
-                  <p>No tutorials available.</p>
-                )}
-              </div>
+            <div className="py-6 text-sm font-thin text-stone-800">
+  {split(state.selectedCard)?.length > 0 ? (
+    <p>
+      Tutorials are available for{' '}
+      {split(state.selectedCard)
+        .map((tutorial, index, array) => (
+          <span key={index}>
+            <PrismicLink
+              field={tutorial.link}
+              className="text-blue-600 hover:underline"
+            >
+              {tutorial.name}
+            </PrismicLink>
+            {index < array.length - 1 && (index === array.length - 2 ? ' & ' : ', ')}
+          </span>
+        ))}
+    </p>
+  ) : (
+    <p>No tutorials available.</p>
+  )}
+</div>
             </div>
           </div>
         </div>

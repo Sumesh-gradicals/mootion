@@ -165,7 +165,7 @@ const Main = ({ slice }) => {
           <span key={index}>
             <PrismicLink
               field={tutorial.link}
-              className="text-blue-600 hover:underline"
+              className=" underline text-stone-800 "
             >
               {tutorial.name}
             </PrismicLink>

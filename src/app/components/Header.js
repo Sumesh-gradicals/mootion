@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default  function Header(){
 
     return(   
-    <header className=' flex md:justify-center px-4 py-8 '>
+    <header className=' flex justify-between md:justify-center px-10 py-8 '>
     
       
     <Image
@@ -12,6 +12,11 @@ export default  function Header(){
   width={100}
   height={28} 
 className='cursor-pointer'/>
-    
+     <div className="head cursor-pointer  block  md:hidden">
+          <div>
+            <div className="eye"></div>
+            <div className="eye"></div>
+          </div>
+          </div>
     </header>
 )}

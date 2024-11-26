@@ -64,10 +64,10 @@ const Main = ({ slice }) => {
     <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
       <div className="md:px-[100px]">
         {/* Card List */}
-        <ul className="flex flex-wrap justify-center">
+        <ul className="flex flex-wrap justify-center ">
           {filteredCards.map((card, index) => (
             <li
-            className="px-2 py-3 cursor-pointer"
+            className="px-2 py-5 cursor-pointer transition-all duration-300 transform md:hover:scale-90 hover:opacity-70"
             key={index}
             onClick={(e) => {
               if (modalState.isModalOpen && modalState.selectedCard === card) {
@@ -81,7 +81,7 @@ const Main = ({ slice }) => {
           >
               <PrismicNextImage field={card.image} className="w-[400px] h-[300px] rounded-md" />
               <div className="flex items-center justify-between px-3 -mt-9 cursor-pointer">
-                <span className="bg-gray-400 text-stone-800 px-2 rounded-full font-medium">
+                <span className="bg-gray-400 text-stone-800 px-2 rounded-full text-sm">
                   {card.name}
                 </span>
                 <p className="uppercase text-[10px] bg-fuchsia-800 text-fuchsia-500 px-1 rounded-sm">
@@ -90,10 +90,12 @@ const Main = ({ slice }) => {
               </div>
               {/* for small screens */}
               {modalState.isModalOpen && modalState.selectedCard === card && (
-                <div className="mt-4  rounded-lg md:hidden">
+                <div className={`mt-4 rounded-lg md:hidden transition-all duration-300 transform ${
+                  modalState.isModalOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
+                }`}>
 
                   <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-bold">{modalState.selectedCard?.name}</h2>
+                  <h2 className="font-bold text-xl mt-6">{modalState.selectedCard?.name}</h2>
                   <PrismicLink
                     field={modalState.selectedCard?.view_live}
                     className="text-black underline text-sm"
@@ -136,12 +138,12 @@ const Main = ({ slice }) => {
       {/* Modal */}
       {modalState.isModalOpen && (
         <div
-          className="fixed inset-0  items-center justify-center bg-black bg-opacity-50 hidden md:flex"
+          className="fixed inset-0  items-center justify-center bg-black bg-opacity-50  md:z-50 hidden md:flex"
           onClick={closeModal}
         >
           <div
-            className="bg-white rounded-lg p-4 w-[700px] h-[575px]"
-            onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-lg p-4 w-[700px] h-[575px] "
+             onClick={(e) => e.stopPropagation()}
           >
             <div className="px-3 py-4">
               <div className="flex items-center justify-between">
@@ -187,4 +189,4 @@ const Main = ({ slice }) => {
   );
 };
 
-export default Main;
+export default Main

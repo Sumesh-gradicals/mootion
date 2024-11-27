@@ -96,7 +96,7 @@ const Main = ({ slice }) => {
                 </p>
               </div>
               {/* for small screens */}
-              {modalState.isModalOpen && (
+              {modalState.isModalOpen &&   modalState.selectedCard.name === card.name &&(
                 <div className={`mt-4 rounded-lg md:hidden transition-all  ${
                   modalState.isModalOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
                 }`}>

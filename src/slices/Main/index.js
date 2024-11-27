@@ -110,7 +110,7 @@ const Main = ({ slice }) => {
                     View Live
                   </PrismicLink>
                   </div>
-                  <div className="flex items-center mt-2">
+                  <div className="flex items-center mt-4">
   <div className="flex items-center justify-center w-8 h-8 rounded-full bg-fuchsia-400 text-black font-bold italic">
     {modalState.selectedCard?.firstLetter}
   </div>
@@ -118,7 +118,7 @@ const Main = ({ slice }) => {
     {modalState.selectedCard?.submitted_by}&apos;s Submission
   </p>
 </div>
-                  <div className="text-sm text-gray-700 mt-2">
+                  <div className="text-sm text-gray-700 mt-4">
                     {split(modalState.selectedCard)?.length > 0 ? (
                       <p>
                         Tutorials are available for{" "}

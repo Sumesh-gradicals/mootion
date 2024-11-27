@@ -103,12 +103,20 @@ const Main = ({ slice }) => {
 
                   <div className="flex items-center justify-between">
                   <h2 className="font-bold text-xl mt-6 text-black">{modalState.selectedCard?.name}</h2>
+                  <div className="flex items-center justify-around">
                   <PrismicLink
                     field={modalState.selectedCard?.view_live}
                     className="text-black underline text-sm mt-6"
                   >
                     View Live
+                   
                   </PrismicLink>
+                  <img
+  src="/right-arrow-svgrepo-com.svg"
+  alt="Logo"
+  
+className='w-[24px] h-[14px] mt-6 underline'/>
+                  </div>
                   </div>
                   <div className="flex items-center mt-4">
   <div className="flex items-center justify-center w-8 h-8 rounded-full bg-fuchsia-400 text-black font-bold italic">
@@ -162,9 +170,17 @@ const Main = ({ slice }) => {
                 <h2 className="text-3xl font-semibold text-stone-800">
                   {modalState.selectedCard?.name}
                 </h2>
-                <PrismicLink field={modalState.selectedCard?.view_live} className="text-xs font-semibold">
+                <div className="flex items-center justify-between">
+                <PrismicLink field={modalState.selectedCard?.view_live} className="text-xs  text-black font-semibold">
                   View Live
                 </PrismicLink>
+                <img
+  src="/right-arrow-svgrepo-com.svg"
+  alt="Logo"
+  
+className='w-[24px] h-[14px] underline'/>
+                  </div>
+                
               </div>
               <div className="flex items-center py-4">
   <div className="flex items-center justify-center w-8 h-8 rounded-full bg-fuchsia-400 text-black font-bold italic">

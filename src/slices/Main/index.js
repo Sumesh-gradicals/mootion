@@ -102,7 +102,7 @@ const Main = ({ slice }) => {
                 }`}>
 
                   <div className="flex items-center justify-between">
-                  <h2 className="font-bold text-xl mt-6">{modalState.selectedCard?.name}</h2>
+                  <h2 className="font-bold text-xl mt-6 text-black">{modalState.selectedCard?.name}</h2>
                   <PrismicLink
                     field={modalState.selectedCard?.view_live}
                     className="text-black underline text-sm"

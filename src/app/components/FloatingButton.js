@@ -60,7 +60,7 @@ const FloatingButton = () => {
       </div>
 
       <div className="px-2 py-2 rounded-full md:rounded-2xl text-white bg-[#383338] shadow-xl">
-        <div className="flex h-[60px] w-[410px] items-center justify-around">
+        <div className="flex h-[60px] w-[350px] md:w-[410px] items-center justify-around">
           <button
             className={`px-2 ${
               currentIndex === 0 ? "opacity-50 cursor-not-allowed" : ""

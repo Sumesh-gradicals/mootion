@@ -14,6 +14,7 @@ const Main = ({ slice }) => {
     selectedCard: null,
   });
 
+  const [isIndex ,setIsIndex] = useState();
   const split = (card) => {
     if (!card) return [];
     const tutorials = [];
@@ -77,8 +78,10 @@ const Main = ({ slice }) => {
             className="px-2 py-8 md:py-4 cursor-pointer transition-all duration-300 transform md:hover:scale-95 hover:opacity-70"
             key={index}
             onClick={(e) => {
-              if (modalState.isModalOpen ) {
-           
+            setIsIndex(index)
+              if (modalState.isModalOpen &&  index=== isIndex ) {
+              
+               
                 closeModal();
               } else {
                

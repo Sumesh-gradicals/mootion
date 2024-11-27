@@ -2,12 +2,20 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import FloatingButton from "./components/FloatingButton";
+import App from "./components/App";
 
 export default async function Page() {
   const client = createClient();
   const page = await client.getSingle("home");
 
-  return <SliceZone slices={page.data.slices} components={components} />;
+  return (<App><SliceZone slices={page.data.slices} components={components} /> 
+    
+    
+           
+           
+            
+     <FloatingButton /></App>);
 }
 
 export async function generateMetadata() {

@@ -29,10 +29,10 @@ export default function RootLayout({ children }) {
             className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#F9F9F9] h-screen`}
           >
             <Header />
-           <App>
+          
             {children}
-            <FloatingButton />
-            </App>
+           
+         
           </body>
         </html>
      

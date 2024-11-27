@@ -14,7 +14,6 @@ const Main = ({ slice }) => {
     selectedCard: null,
   });
 
- 
   const split = (card) => {
     if (!card) return [];
     const tutorials = [];
@@ -45,11 +44,19 @@ const Main = ({ slice }) => {
 
   // Open modal
   const openModal = (card, event) => {
+
+    const word = card.submitted_by;
+    let letter = word.charAt(0);
+    const newData = {...card ,firstLetter:letter}
+
+    
     event.stopPropagation();
-    setModalState({
+    if (newData) {setModalState({
       isModalOpen: true,
-      selectedCard: card,
-    });
+      selectedCard: newData,
+      
+    });}
+    return null;
   };
 
   // Close modal
@@ -64,13 +71,13 @@ const Main = ({ slice }) => {
     <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
       <div className="md:px-[100px]">
         {/* Card List */}
-        <ul className="flex flex-wrap justify-center ">
+        <ul className="flex flex-wrap justify-center pb-48 md:pb-0 ">
           {filteredCards.map((card, index) => (
             <li
-            className="px-2 py-5 cursor-pointer transition-all duration-300 transform md:hover:scale-90 hover:opacity-70"
+            className="px-2 py-8 md:py-4 cursor-pointer transition-all duration-300 transform md:hover:scale-95 hover:opacity-70"
             key={index}
             onClick={(e) => {
-              if (modalState.isModalOpen && modalState.selectedCard === card) {
+              if (modalState.isModalOpen ) {
            
                 closeModal();
               } else {
@@ -89,8 +96,8 @@ const Main = ({ slice }) => {
                 </p>
               </div>
               {/* for small screens */}
-              {modalState.isModalOpen && modalState.selectedCard === card && (
-                <div className={`mt-4 rounded-lg md:hidden transition-all duration-300 transform ${
+              {modalState.isModalOpen && (
+                <div className={`mt-4 rounded-lg md:hidden transition-all  ${
                   modalState.isModalOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
                 }`}>
 
@@ -103,9 +110,14 @@ const Main = ({ slice }) => {
                     View Live
                   </PrismicLink>
                   </div>
-                  <p className="text-xs text-gray-500 mt-2">
-                    {modalState.selectedCard?.submitted_by}&apos;s Submission
-                  </p>
+                  <div className="flex items-center mt-2">
+  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-fuchsia-400 text-black font-bold italic">
+    {modalState.selectedCard?.firstLetter}
+  </div>
+  <p className="ml-3 text-xs text-gray-500">
+    {modalState.selectedCard?.submitted_by}&apos;s Submission
+  </p>
+</div>
                   <div className="text-sm text-gray-700 mt-2">
                     {split(modalState.selectedCard)?.length > 0 ? (
                       <p>
@@ -154,9 +166,14 @@ const Main = ({ slice }) => {
                   View Live
                 </PrismicLink>
               </div>
-              <p className="py-4 text-xs font-thin text-slate-500">
-                {modalState.selectedCard?.submitted_by}&apos;s Submission
-              </p>
+              <div className="flex items-center py-4">
+  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-fuchsia-400 text-black font-bold italic">
+    {modalState.selectedCard?.firstLetter}
+  </div>
+  <p className="ml-3 text-xs font-thin text-slate-500">
+    {modalState.selectedCard?.submitted_by}&apos;s Submission
+  </p>
+</div>
               <PrismicNextImage
                 field={modalState.selectedCard?.image}
                 className="w-[645px] h-[370px] rounded-md"
